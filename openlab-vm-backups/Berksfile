@@ -1,3 +1,3 @@
 source 'https://supermarket.chef.io'
-
+cookbook 'coe-lwrp-ssh', path: '/home/sidx/chef/cookbooks/coe-lwrp-ssh'
 metadata
