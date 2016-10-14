@@ -43,8 +43,16 @@ template "/tmp/mysql_secure_installation_silent.sh" do
   variables :mysql_password => node['com-mariadb']['mysql-password']
 end
 
+directory '/root/.chefvars' do
+  owner 'root'
+  group 'root'
+  mode '0700'
+  action :create
+end
+
 execute 'mysql_secure_installation_silent' do
-  command '/tmp/mysql_secure_installation_silent.sh'
+  command '/tmp/mysql_secure_installation_silent.sh && touch /root/.chefvars/mysql_secure_installation_silent.bool'
+  not_if {::File.exist?("/root/.chefvars/mysql_secure_installation_silent.bool")}  
 end
 
 

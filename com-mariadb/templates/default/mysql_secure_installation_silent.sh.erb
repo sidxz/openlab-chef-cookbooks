@@ -123,7 +123,7 @@ get_root_password() {
 
 set_root_password() {
   
-  password1=<%="#{@mysql_password}"%>
+  password1="<%="#{@mysql_password}"%>"
   
   
     if [ "$password1" = "" ]; then
@@ -286,7 +286,7 @@ echo "ensures that someone cannot guess at the root password from the network."
 echo
 
 echo $echo_n "Disallowing root login remotely $echo_c"
-remove_remote_root
+#remove_remote_root
 echo
 
 
