@@ -1,0 +1,17 @@
+name 'openlab-utils'
+maintainer 'The Authors'
+maintainer_email 'sid@tamu.edu'
+license 'all_rights'
+description 'Installs/Configures openlab-utils'
+long_description 'Installs/Configures openlab-utils'
+version '0.2.3'
+
+# If you upload to Supermarket you should set this so your cookbook
+# gets a `View Issues` link
+# issues_url 'https://github.com/<insert_org_here>/openlab-utils/issues' if respond_to?(:issues_url)
+
+# If you upload to Supermarket you should set this so your cookbook
+# gets a `View Source` link
+# source_url 'https://github.com/<insert_org_here>/openlab-utils' if respond_to?(:source_url)
+
+depends 'ntp', '~> 1.4.0'

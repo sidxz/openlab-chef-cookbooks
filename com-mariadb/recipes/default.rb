@@ -9,8 +9,8 @@ package "software-properties-common" do
 end
 
 apt_repository 'maria-db' do
-  uri 'http://ftp.utexas.edu/mariadb/repo/10.1/ubuntu xenial main'
-#  components ['main']
+  uri 'http://ftp.utexas.edu/mariadb/repo/10.1/ubuntu'
+  components ['main']
   distribution 'xenial'
   key '0xF1656F24C74CD1D8'
   keyserver 'keyserver.ubuntu.com'
@@ -24,5 +24,31 @@ end
 
 package "python-mysqldb" do
   action [ :install ]
+end
+
+template "/etc/mysql/my.cnf" do
+  source "my.cnf.erb"
+  owner 'root'
+  group 'root'
+  mode 0600
+  variables :bind_address => node['com-mariadb']['mysql-bind-address']
+  notifies :restart, 'service[mysql]', :delayed
+end
+
+template "/tmp/mysql_secure_installation_silent.sh" do
+  source "mysql_secure_installation_silent.sh.erb"
+  owner 'root'
+  group 'root'
+  mode 0700
+  variables :mysql_password => node['com-mariadb']['mysql-password']
+end
+
+execute 'mysql_secure_installation_silent' do
+  command '/tmp/mysql_secure_installation_silent.sh'
+end
+
+
+service "mysql" do
+  action :nothing
 end
 
