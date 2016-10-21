@@ -1,0 +1,1 @@
+default['openlab-identity']['install']['keystone-dp-pass'] = "WatchDogs@2"
