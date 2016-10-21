@@ -1,1 +1,1 @@
-default['openlab-identity']['install']['keystone-dp-pass'] = "WatchDogs@2"
+default['openlab-identity']['install']['keystone-dp-pass'] = "WatchDogs2"

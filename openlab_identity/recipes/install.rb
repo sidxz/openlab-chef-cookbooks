@@ -29,8 +29,8 @@ end
 
 template "/etc/keystone/keystone.conf" do
   source "keystone.conf.erb"
-  owner 'root'
-  group 'root'
+  owner 'keystone'
+  group 'keystone'
   mode 0700
   variables :keystone_dbpass => node['openlab-identity']['install']['keystone-dp-pass']
 end
