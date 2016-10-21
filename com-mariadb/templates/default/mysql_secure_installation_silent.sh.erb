@@ -174,6 +174,17 @@ remove_remote_root() {
     fi
 }
 
+#Add access to remote root
+add_remote_root() {
+    do_query "CREATE USER 'root'@'%' IDENTIFIED BY '<%="#{@mysql_password}"%>';"
+    do_query "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';"
+    if [ $? -eq 0 ]; then
+    echo " ... Success Added Remote root!"
+    else
+    echo " ... Failed! Adding remote root"
+    fi
+}
+
 remove_test_database() {
     echo " - Dropping test database..."
     do_query "DROP DATABASE test;"
@@ -289,7 +300,15 @@ echo $echo_n "Disallowing root login remotely $echo_c"
 #remove_remote_root
 echo
 
+#
+# Add remote root
+#
+echo "-----------------------------------------------------------------------"
+echo "Update Database for remote root connectivity."
+echo
+add_remote_root
 
+echo
 #
 # Remove test database
 #
