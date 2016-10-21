@@ -14,11 +14,13 @@ end
 execute 'rabbitmq_add_user' do
   command "rabbitmqctl add_user openstack #{node['com_rabbitmq']['rabbit_pass']} && touch /root/.chefvars/rabbitmqUser.bool"
   not_if {::File.exist?("/root/.chefvars/rabbitmqUser.bool")}  
+  live_stream true
 end
 
 #rabbitmqctl set_permissions openstack ".*" ".*" ".*"
 
 execute 'abbitmq_set_user_permission' do
   command "rabbitmqctl set_permissions openstack \".*\" \".*\" \".*\" && touch /root/.chefvars/rabbitmqUserPermissions.bool"
-  not_if {::File.exist?("/root/.chefvars/rabbitmqUserPermissions.bool")}  
+  not_if {::File.exist?("/root/.chefvars/rabbitmqUserPermissions.bool")}
+  live_stream true
 end
