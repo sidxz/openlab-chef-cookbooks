@@ -18,8 +18,8 @@ if(node['openlab-identity']['install-samples'] && !File.exist?("/root/.chefvars
 # OS_PASSWORD=<password>                     # --os-password
 # OS_AUTH_URL=<identity-api-endpoint>        # --os-auth-url
 
-credentials = "--os-username=#{node['openlab-identity']['openstack-cli']['OS_USERNAME']} --os-password=#{node['openlab-identity']['openstack-cli']['OS_PASSWORD']} "
-projectParams = "--os-project-name=#{node['openlab-identity']['openstack-cli']['OS_PROJECT_NAME']} --os-user-domain-name=#{node['openlab-identity']['openstack-cli']['OS_USER_DOMAIN_NAME']} --os-project-domain-name=#{node['openlab-identity']['openstack-cli']['OS_PROJECT_DOMAIN_NAME']} --os-auth-url=\"#{node['openlab-identity']['openstack-cli']['OS_AUTH_URL']}\" --os-identity-api-version=#{node['openlab-identity']['openstack-cli']['OS_IDENTITY_API_VERSION']}"
+credentials = node['openlab-global']['admin-credentials']
+projectParams = node['openlab-global']['project-params']
 #The Identity service provides authentication services for each OpenStack
 #service. The authentication service uses a combination of domains, projects,
 #users, and roles.
