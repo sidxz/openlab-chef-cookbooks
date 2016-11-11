@@ -5,8 +5,7 @@
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
 
-if(node['openlab-identity']['install-samples'] && !File.exist?("/root/.chefvars
-/openlab_identity-samples-installed.bool"))
+if(node['openlab-identity']['install-samples'] && !::File.exist?("/root/.chefvars/openlab_identity-samples-installed.bool"))
 
 #Set Identity Variable
 # We ar not using environment variables so we need to pass variables in cli
@@ -44,7 +43,7 @@ end
 # Create the demo user
 execute "user-create-nonadmin" do
   command <<-EOH
-  openstack user create --domain default --description "Demo Project" --password=demo #{credentials} #{projectParams} demo
+  openstack user create --domain default --password=demo #{credentials} #{projectParams} demo
   EOH
   live_stream true
 end

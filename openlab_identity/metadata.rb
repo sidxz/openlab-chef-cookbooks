@@ -4,7 +4,7 @@ maintainer_email 'you@example.com'
 license 'all_rights'
 description 'Installs/Configures openlab_identity'
 long_description 'Installs/Configures openlab_identity'
-version '0.1.6'
+version '0.1.7'
 
 # If you upload to Supermarket you should set this so your cookbook
 # gets a `View Issues` link
@@ -15,3 +15,4 @@ version '0.1.6'
 # source_url 'https://github.com/<insert_org_here>/openlab_identity' if respond_to?(:source_url)
 
 depends 'openlab_global'
+#depends 'openlab_global'
