@@ -6,3 +6,4 @@
 
 
 include_recipe 'openlab_identity::install'
+include_recipe 'openlab_identity::samples'
