@@ -1,0 +1,5 @@
+source 'https://supermarket.chef.io'
+
+metadata
+
+cookbook 'openlab_global', path: '../openlab_global'
