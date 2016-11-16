@@ -1,6 +1,6 @@
 # # encoding: utf-8
 
-# Inspec test for recipe openlab_nova::default
+# Inspec test for recipe openlab_compute::install_lxd
 
 # The Inspec reference, with examples and extensive documentation, can be
 # found at https://docs.chef.io/inspec_reference.html

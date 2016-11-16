@@ -64,17 +64,19 @@ end
 end
 
 #Install nova
-package "nova-api nova-conductor nova-consoleauth nova-novncproxy nova-scheduler" do
-  action [ :install ]
+%w(nova-api nova-conductor nova-consoleauth nova-novncproxy nova-scheduler).each do |pkg|
+  package pkg do
+    action [ :install ]
+  end
 end
 
-# #Configure nova
+#Configure nova
 # template "/etc/nova/nova.conf" do
-#   source "nova.conf.erb"
+#   source "nova_controller.conf.erb"
 #   owner 'nova'
 #   group 'nova'
 #   mode 0711
-#   variables :nova_dbpass => node['openlab-compute']['install']['nova-dp-pass'], :nova_user_pass => node['openlab-compute']['install']['nova-user-pass']
+#   variables :nova_dbpass => node['openlab-compute']['install']['nova-dp-pass'], :nova_user_pass => node['openlab-compute']['install']['nova-user-pass'], :rabbit_pass => node['com_rabbitmq']['rabbit_pass']
 #   notifies :restart, 'service[nova-api]', :delayed
 #   notifies :restart, 'service[nova-consoleauth]', :delayed
 #   notifies :restart, 'service[nova-scheduler]', :delayed

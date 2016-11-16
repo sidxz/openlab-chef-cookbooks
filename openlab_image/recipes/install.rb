@@ -54,10 +54,10 @@ end
 %w(public internal admin).each do |key|
 	execute "endpoint-create-glance" do
   		command <<-EOH
-  openstack endpoint create --region RegionOne image #{key} http://openlab-controller:9292 #{credentials} #{projectParams} && touch /root/.chefvars/openlab_image-endpoint-create-glance.bool
+  openstack endpoint create --region RegionOne image #{key} http://openlab-controller:9292 #{credentials} #{projectParams} && touch /root/.chefvars/openlab_image-endpoint-create-glance-#{key}.bool
   EOH
   	live_stream true
-    not_if {::File.exist?("/root/.chefvars/openlab_image-endpoint-create-glance.bool")}
+    not_if {::File.exist?("/root/.chefvars/openlab_image-endpoint-create-glance-#{key}.bool")}
 	end 	
 end
 
