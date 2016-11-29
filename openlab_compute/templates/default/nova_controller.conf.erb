@@ -53,4 +53,18 @@ vncserver_proxyclient_address = $my_ip
 [glance]
 api_servers = http://openlab-controller:9292
 
+[neutron]
+url = http://openlab-controller:9696
+auth_url = http://openlab-controller:35357
+auth_type = password
+project_domain_name = default
+user_domain_name = default
+region_name = RegionOne
+project_name = service
+username = neutron
+password = <%= "#{@neutron_user_pass}"  %>
+service_metadata_proxy = True
+metadata_proxy_shared_secret = <%= "#{@metadat_proxy_secret}"%>
+
+
 

@@ -71,39 +71,39 @@ end
 end
 
 #Configure nova
-# template "/etc/nova/nova.conf" do
-#   source "nova_controller.conf.erb"
-#   owner 'nova'
-#   group 'nova'
-#   mode 0711
-#   variables :nova_dbpass => node['openlab-compute']['install']['nova-dp-pass'], :nova_user_pass => node['openlab-compute']['install']['nova-user-pass'], :rabbit_pass => node['com_rabbitmq']['rabbit_pass']
-#   notifies :restart, 'service[nova-api]', :delayed
-#   notifies :restart, 'service[nova-consoleauth]', :delayed
-#   notifies :restart, 'service[nova-scheduler]', :delayed
-#   notifies :restart, 'service[nova-conductor]', :delayed
-#   notifies :restart, 'service[nova-novncproxy]', :delayed
-# end
+template "/etc/nova/nova.conf" do
+  source "nova_controller.conf.erb"
+  owner 'nova'
+  group 'nova'
+  mode 0711
+  variables :nova_dbpass => node['openlab-compute']['install']['nova-dp-pass'], :nova_user_pass => node['openlab-compute']['install']['nova-user-pass'], :rabbit_pass => node['com_rabbitmq']['rabbit_pass'], :neutron_user_pass => node['openlab-compute']['install']['neutron-user-pass'], :metadata_proxy_secret => node['openlab-compute']['metadata']['proxy-secret']
+  notifies :restart, 'service[nova-api]', :delayed
+  notifies :restart, 'service[nova-consoleauth]', :delayed
+  notifies :restart, 'service[nova-scheduler]', :delayed
+  notifies :restart, 'service[nova-conductor]', :delayed
+  notifies :restart, 'service[nova-novncproxy]', :delayed
+end
 
-# execute "nova_api_db_sync" do
-#   command "su -s /bin/sh -c \"nova-manage api_db sync\" nova && touch /root/.chefvars/openlab_identity-install-nova-api-dbsync.bool"
-#   live_stream true
-#   not_if {::File.exist?("/root/.chefvars/openlab_identity-install-nova-api-dbsync.bool")}
-#   notifies :restart, 'service[nova-api]', :delayed
-#   notifies :restart, 'service[nova-consoleauth]', :delayed
-#   notifies :restart, 'service[nova-scheduler]', :delayed
-#   notifies :restart, 'service[nova-conductor]', :delayed
-#   notifies :restart, 'service[nova-novncproxy]', :delayed
-# end
-# execute "nova_db_sync" do
-#   command "su -s /bin/sh -c \"nova-manage db sync\" nova && touch /root/.chefvars/openlab_identity-install-nova-dbsync.bool"
-#   live_stream true
-#   not_if {::File.exist?("/root/.chefvars/openlab_identity-install-nova-dbsync.bool")}
-#   notifies :restart, 'service[nova-api]', :delayed
-#   notifies :restart, 'service[nova-consoleauth]', :delayed
-#   notifies :restart, 'service[nova-scheduler]', :delayed
-#   notifies :restart, 'service[nova-conductor]', :delayed
-#   notifies :restart, 'service[nova-novncproxy]', :delayed
-# end
+execute "nova_api_db_sync" do
+  command "su -s /bin/sh -c \"nova-manage api_db sync\" nova && touch /root/.chefvars/openlab_identity-install-nova-api-dbsync.bool"
+  live_stream true
+  not_if {::File.exist?("/root/.chefvars/openlab_identity-install-nova-api-dbsync.bool")}
+  notifies :restart, 'service[nova-api]', :delayed
+  notifies :restart, 'service[nova-consoleauth]', :delayed
+  notifies :restart, 'service[nova-scheduler]', :delayed
+  notifies :restart, 'service[nova-conductor]', :delayed
+  notifies :restart, 'service[nova-novncproxy]', :delayed
+end
+execute "nova_db_sync" do
+  command "su -s /bin/sh -c \"nova-manage db sync\" nova && touch /root/.chefvars/openlab_identity-install-nova-dbsync.bool"
+  live_stream true
+  not_if {::File.exist?("/root/.chefvars/openlab_identity-install-nova-dbsync.bool")}
+  notifies :restart, 'service[nova-api]', :delayed
+  notifies :restart, 'service[nova-consoleauth]', :delayed
+  notifies :restart, 'service[nova-scheduler]', :delayed
+  notifies :restart, 'service[nova-conductor]', :delayed
+  notifies :restart, 'service[nova-novncproxy]', :delayed
+end
 
 
 #SERVICES
