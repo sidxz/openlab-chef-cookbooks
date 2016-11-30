@@ -75,7 +75,7 @@ end
 #Configure neutron
 #TODO : change nova_user_pass to be global
 template "/etc/neutron/neutron.conf" do
-  source "neutron-controller.conf.erb"
+  source "neutron_controller.conf.erb"
   owner 'neutron'
   group 'neutron'
   mode 0711

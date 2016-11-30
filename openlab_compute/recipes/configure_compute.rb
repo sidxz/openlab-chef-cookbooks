@@ -18,7 +18,7 @@ template "/etc/nova/nova.conf" do
   owner 'nova'
   group 'nova'
   mode 0711
-  variables :nova_user_pass => node['openlab-compute']['install']['nova-user-pass'], :rabbit_pass => node['com_rabbitmq']['rabbit_pass']
+  variables :nova_user_pass => node['openlab-compute']['install']['nova-user-pass'], :rabbit_pass => node['com_rabbitmq']['rabbit_pass'], :neutron_user_pass => node['openlab-compute']['install']['neutron-user-pass']
   notifies :restart, 'service[nova-compute]', :delayed
 end
 
