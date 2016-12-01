@@ -98,11 +98,11 @@ execute "nova_db_sync" do
   command "su -s /bin/sh -c \"nova-manage db sync\" nova && touch /root/.chefvars/openlab_identity-install-nova-dbsync.bool"
   live_stream true
   not_if {::File.exist?("/root/.chefvars/openlab_identity-install-nova-dbsync.bool")}
-  notifies :restart, 'service[nova-api]', :delayed
-  notifies :restart, 'service[nova-consoleauth]', :delayed
-  notifies :restart, 'service[nova-scheduler]', :delayed
-  notifies :restart, 'service[nova-conductor]', :delayed
-  notifies :restart, 'service[nova-novncproxy]', :delayed
+  notifies :restart, 'service[nova-api]', :immediate
+  notifies :restart, 'service[nova-consoleauth]', :immediate
+  notifies :restart, 'service[nova-scheduler]', :immediate
+  notifies :restart, 'service[nova-conductor]', :immediate
+  notifies :restart, 'service[nova-novncproxy]', :immediate
 end
 
 

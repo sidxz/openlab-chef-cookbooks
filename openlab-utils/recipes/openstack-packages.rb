@@ -20,9 +20,9 @@ bash 'apt-update' do
   code "apt-get update"
 end
 
-bash 'apt-upgrade' do
-  code "apt-get dist-upgrade -y"
-end
+# bash 'apt-upgrade' do
+#   code "apt-get dist-upgrade -y"
+# end
 
 package "python-openstackclient" do
   action [ :install ]

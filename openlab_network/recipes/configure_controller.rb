@@ -117,11 +117,11 @@ execute "neutron_db_manage" do
   command "su -s /bin/sh -c \"neutron-db-manage --config-file /etc/neutron/neutron.conf --config-file /etc/neutron/plugins/ml2/ml2_conf.ini upgrade head\" neutron && touch /root/.chefvars/openlab_network-install-neutron-dbmanage.bool"
   live_stream true
   not_if {::File.exist?("/root/.chefvars/openlab_network-install-neutron-dbmanage.bool")}
-  notifies :restart, 'service[nova-api]', :delayed
-  notifies :restart, 'service[neutron-server]', :delayed
-  notifies :restart, 'service[neutron-linuxbridge-agent]', :delayed
-  notifies :restart, 'service[neutron-dhcp-agent]', :delayed
-  notifies :restart, 'service[neutron-metadata-agent]', :delayed
+  notifies :restart, 'service[nova-api]', :immediate
+  notifies :restart, 'service[neutron-server]', :immediate
+  notifies :restart, 'service[neutron-linuxbridge-agent]', :immediate
+  # notifies :restart, 'service[neutron-dhcp-agent]', :delayed
+  # notifies :restart, 'service[neutron-metadata-agent]', :delayed
 end
 
 service "nova-api" do

@@ -1,3 +1,10 @@
+# .--,--.
+#   `.  ,.'   ! Maintained By Chef
+#    |___|    DO NOT EDIT BY HAND
+#    :o o:    COE TAMU
+#   _`~^~'_   
+# /'   ^   `\
+#######################################################################
 [DEFAULT]
 
 #
@@ -19,7 +26,7 @@
 #auth_ca_cert = <None>
 
 # IP address used by Nova metadata server. (string value)
-nova_metadata_ip = 128.194.142.141
+nova_metadata_ip = openlab-controller
 
 # TCP Port used by Nova metadata server. (port value)
 # Minimum value: 0
@@ -31,7 +38,7 @@ nova_metadata_ip = 128.194.142.141
 # but it must match here and in the configuration used by the Nova Metadata
 # Server. NOTE: Nova uses the same config key, but in [neutron] section.
 # (string value)
-metadata_proxy_shared_secret = <%= "#{@metadat_proxy_secret}"%>
+metadata_proxy_shared_secret = <%= "#{@metadata_proxy_secret}"%>
 
 # Protocol to access nova metadata, http or https (string value)
 # Allowed values: http, https

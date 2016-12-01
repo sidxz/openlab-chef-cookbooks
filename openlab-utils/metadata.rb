@@ -4,7 +4,7 @@ maintainer_email 'sid@tamu.edu'
 license 'all_rights'
 description 'Installs/Configures openlab-utils'
 long_description 'Installs/Configures openlab-utils'
-version '0.4.0'
+version '0.5.0'
 
 # If you upload to Supermarket you should set this so your cookbook
 # gets a `View Issues` link
