@@ -4,7 +4,7 @@ maintainer_email 'you@example.com'
 license 'all_rights'
 description 'Installs/Configures com-mariadb'
 long_description 'Installs/Configures com-mariadb'
-version '0.1.2'
+version '0.1.5'
 
 # If you upload to Supermarket you should set this so your cookbook
 # gets a `View Issues` link

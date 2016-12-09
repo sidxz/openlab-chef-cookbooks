@@ -4,7 +4,7 @@ maintainer_email 'you@example.com'
 license 'all_rights'
 description 'Installs/Configures openlab_nova'
 long_description 'Installs/Configures openlab_nova'
-version '0.3.7'
+version '0.3.9'
 
 # If you upload to Supermarket you should set this so your cookbook
 # gets a `View Issues` link

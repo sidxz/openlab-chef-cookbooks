@@ -26,12 +26,20 @@ package "python-pymysql" do
   action [ :install ]
 end
 
-template "/etc/mysql/my.cnf" do
-  source "my.cnf.erb"
+template "/etc/mysql/mariadb.conf.d/99-openstack.cnf" do
+  source "99-openstack.cnf.erb"
   owner 'root'
   group 'root'
   mode 0600
   variables :bind_address => node['com-mariadb']['mysql-bind-address']
+  notifies :restart, 'service[mysql]', :delayed
+end
+
+cookbook_file '/etc/mysql/mariadb.conf.d/50-server.cnf' do
+  source '50-server.cnf'
+  mode '0755'
+  owner 'root'
+  group 'root'
   notifies :restart, 'service[mysql]', :delayed
 end
 

@@ -21,7 +21,7 @@ api_paste_config=/etc/nova/api-paste.ini
 enabled_apis=ec2,osapi_compute,metadata
 transport_url = rabbit://openstack:<%= "#{@rabbit_pass}"  %>@controller
 auth_strategy = keystone
-my_ip = 128.194.142.171
+my_ip = 10.20.20.12
 use_neutron = True
 firewall_driver = nova.virt.firewall.NoopFirewallDriver
 
@@ -41,7 +41,7 @@ password = <%= "#{@nova_user_pass}"  %>
 enabled = True
 vncserver_listen = 0.0.0.0
 vncserver_proxyclient_address = $my_ip
-novncproxy_base_url = http://128.194.142.141:6080/vnc_auto.html
+novncproxy_base_url = http://10.20.20.11:6080/vnc_auto.html
 
 [glance]
 api_servers = http://controller:9292

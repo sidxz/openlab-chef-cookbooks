@@ -5,4 +5,4 @@ default['openlab-utils']['time-zone']= "America/Chicago"
 default['ntp']['servers'] = %w(ntp1.tamu.edu ntp2.tamu.edu ntp3.tamu.edu)
 
 #Memcached Ip
-default['openlab-utils']['memcached']['bind-ip'] = "128.194.142.141"
+default['openlab-utils']['memcached']['bind-ip'] = "10.20.20.11"
