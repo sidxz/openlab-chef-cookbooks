@@ -1754,7 +1754,7 @@ backend = sqlalchemy
 # Deprecated group/name - [DATABASE]/sql_connection
 # Deprecated group/name - [sql]/connection
 #connection = <None>
-connection = mysql+pymysql://glance:<%= "#{@glance_dbpass}"  %>@openlab-controller/glance
+connection = mysql+pymysql://glance:<%= "#{@glance_dbpass}"  %>@controller/glance
 
 # The SQLAlchemy connection string to use to connect to the slave database.
 # (string value)
@@ -3197,8 +3197,8 @@ disk_formats = ami,ari,aki,vhd,vhdx,vmdk,raw,qcow2,vdi,iso,root-tar
 # If you're using a versioned v2 endpoint here, then this  should *not* be the
 # same endpoint the service user utilizes  for validating tokens, because normal
 # end users may not be  able to reach that endpoint. (string value)
-auth_uri = http://openlab-controller:5000
-auth_url = http://openlab-controller:35357
+auth_uri = http://controller:5000
+auth_url = http://controller:35357
 
 
 # API version of the admin Identity API endpoint. (string value)
@@ -3247,7 +3247,7 @@ auth_url = http://openlab-controller:35357
 # undefined, tokens will instead be cached in-process. (list value)
 # Deprecated group/name - [keystone_authtoken]/memcache_servers
 #memcached_servers = <None>
-memcached_servers = openlab-controller:11211
+memcached_servers = controller:11211
 
 # In order to prevent excessive effort spent validating tokens, the middleware
 # caches previously-seen tokens for a configurable duration (in seconds). Set to

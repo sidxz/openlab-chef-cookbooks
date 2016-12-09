@@ -646,7 +646,7 @@ log_dir = /var/log/keystone
 # Deprecated group/name - [DATABASE]/sql_connection
 # Deprecated group/name - [sql]/connection
 #connection = <None>
-connection = mysql+pymysql://keystone:<%= "#{@keystone_dbpass}"  %>@openlab-controller/keystone
+connection = mysql+pymysql://keystone:<%= "#{@keystone_dbpass}"  %>@controller/keystone
 
 # The SQLAlchemy connection string to use to connect to the slave database.
 # (string value)

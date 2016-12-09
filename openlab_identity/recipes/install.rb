@@ -50,9 +50,9 @@ end
 execute "Bootstrap_Identity_service" do
   command <<-EOH
   keystone-manage bootstrap --bootstrap-password #{node['openlab-identity']['install']['keystone-dp-pass']} \
-  --bootstrap-admin-url http://openlab-controller:35357/v3/ \
-  --bootstrap-internal-url http://openlab-controller:35357/v3/ \
-  --bootstrap-public-url http://openlab-controller:5000/v3/ \
+  --bootstrap-admin-url http://controller:35357/v3/ \
+  --bootstrap-internal-url http://controller:35357/v3/ \
+  --bootstrap-public-url http://controller:5000/v3/ \
   --bootstrap-region-id RegionOne \
   && touch /root/.chefvars/openlab_identity-install-BootstrapIdentityService.bool
   EOH

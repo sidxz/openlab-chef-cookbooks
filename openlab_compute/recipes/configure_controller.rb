@@ -56,7 +56,7 @@ end
 %w(public internal admin).each do |key|
 	execute "endpoint-create-nova" do
   		command <<-EOH
-  openstack endpoint create --region RegionOne compute #{key} http://openlab-controller:8774/v2.1/%\\(tenant_id\\)s #{credentials} #{projectParams} && touch /root/.chefvars/openlab_compute-endpoint-create-nova-#{key}.bool
+  openstack endpoint create --region RegionOne compute #{key} http://controller:8774/v2.1/%\\(tenant_id\\)s #{credentials} #{projectParams} && touch /root/.chefvars/openlab_compute-endpoint-create-nova-#{key}.bool
   EOH
   	live_stream true
     not_if {::File.exist?("/root/.chefvars/openlab_compute-endpoint-create-nova-#{key}.bool")}

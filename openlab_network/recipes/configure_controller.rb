@@ -57,7 +57,7 @@ end
 %w(public internal admin).each do |key|
 	execute "endpoint-create-neutron" do
   		command <<-EOH
-  openstack endpoint create --region RegionOne network #{key} http://openlab-controller:9696 #{credentials} #{projectParams} && touch /root/.chefvars/openlab_network-endpoint-create-neutron-#{key}.bool
+  openstack endpoint create --region RegionOne network #{key} http://controller:9696 #{credentials} #{projectParams} && touch /root/.chefvars/openlab_network-endpoint-create-neutron-#{key}.bool
   EOH
   	live_stream true
     not_if {::File.exist?("/root/.chefvars/openlab_network-endpoint-create-neutron-#{key}.bool")}

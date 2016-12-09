@@ -534,7 +534,7 @@ notify_nova_on_port_data_changes = true
 
 # A URL representing the messaging driver to use and its full configuration.
 # (string value)
-transport_url = rabbit://openstack:<%= "#{@rabbit_pass}"  %>@openlab-controller
+transport_url = rabbit://openstack:<%= "#{@rabbit_pass}"  %>@controller
 
 # DEPRECATED: The messaging driver to use, defaults to rabbit. Other drivers
 # include amqp and zmq. (string value)
@@ -726,7 +726,7 @@ root_helper = sudo /usr/bin/neutron-rootwrap /etc/neutron/rootwrap.conf
 # Deprecated group/name - [DEFAULT]/sql_connection
 # Deprecated group/name - [DATABASE]/sql_connection
 # Deprecated group/name - [sql]/connection
-connection=mysql+pymysql://neutron:<%= "#{@neutron_dbpass}"  %>@openlab-controller/neutron
+connection=mysql+pymysql://neutron:<%= "#{@neutron_dbpass}"  %>@controller/neutron
 
 # The SQLAlchemy connection string to use to connect to the slave database.
 # (string value)
@@ -820,9 +820,9 @@ connection=mysql+pymysql://neutron:<%= "#{@neutron_dbpass}"  %>@openlab-controll
 # *not* be the same endpoint the service user utilizes  for validating tokens,
 # because normal end users may not be  able to reach that endpoint. (string
 # value)
-auth_uri = http://openlab-controller:5000
-auth_url = http://openlab-controller:35357
-memcached_servers = openlab-controller:11211
+auth_uri = http://controller:5000
+auth_url = http://controller:35357
+memcached_servers = controller:11211
 auth_type = password
 project_domain_name = default
 user_domain_name = default
@@ -1061,7 +1061,7 @@ password = <%= "#{@neutron_user_pass}"  %>
 # From nova.auth
 #
 
-auth_url = http://openlab-controller:35357
+auth_url = http://controller:35357
 auth_type = password
 project_domain_name = default
 user_domain_name = default
